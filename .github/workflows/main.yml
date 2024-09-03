@@ -12,17 +12,6 @@ jobs:
         with:
           haxe-version: 4.2.5
 
-      - name: Install Libraries
-        run: |
-          haxelib install hmm --quiet
-          haxelib run hmm install --quiet
-
-      - name: Compile
-        run: haxelib run lime build windows
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@main
-        with:
           name: windowsBuild
           path: export\release\windows\bin\*
           if-no-files-found: error
