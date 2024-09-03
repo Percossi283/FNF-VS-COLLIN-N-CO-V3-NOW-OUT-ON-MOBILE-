@@ -22,10 +22,7 @@ jobs:
         uses: krdlab/setup-haxe@v1.2.0
         with:
           haxe-version: 4.2.5
-
-      - name: Compile
-        run: haxelib run lime build ios -D officialBuild -nosign -arm64 -final
-
+          
       - name: Make Ipa
         run: |
           cd export/release/ios/build/Release-iphoneos
@@ -38,12 +35,6 @@ jobs:
            cd export/release/ios/build/Release-iphoneos
            zip PsychEngine-iOS.zip PsychEngine.ipa
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: iOSBuild
-          path: export/release/ios/build/Release-iphoneos/*.zip
-          if-no-files-found: error
   Releaser:
     needs: [Android, iOS]
     runs-on: ubuntu-latest
