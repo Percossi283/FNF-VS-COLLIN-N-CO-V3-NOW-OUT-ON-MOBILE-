@@ -29,7 +29,9 @@ jobs:
     permissions: write-all
     steps:
       - name: Download Android Build of collin n co
-        uses: actions/download-artifact@main
+  uses: actions/upload-artifact@v4
+  # ...
+  
         with:
            name: androidBuild
            path: /home/runner
